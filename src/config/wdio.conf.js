@@ -3,11 +3,11 @@ exports.config = {
   baseUrl: "https://www.saucedemo.com",
   specs: ["./../tests/feature/**/*.feature"],
 
-  maxInstances: 10,
+  maxInstances: 6,
 
   capabilities: [
     {
-      maxInstances: 5,
+      maxInstances: 3,
       browserName: "chrome",
       "goog:chromeOptions": {
         args: ["--headless", "--start-maximized"],
@@ -15,7 +15,7 @@ exports.config = {
       acceptInsecureCerts: true,
     },
     {
-      maxInstances: 5,
+      maxInstances: 3,
       browserName: "MicrosoftEdge",
       "ms:edgeOptions": {
         args: ["--headless", "--start-maximized"],
