@@ -1,5 +1,5 @@
-const LoginPage = require("./login.page");
-const InventoryPage = require("./inventory.page");
+const LoginPage = require("./pages/login.page");
+const InventoryPage = require("./pages/inventory.page");
 const pages = {
   login: LoginPage,
   inventory: InventoryPage,
