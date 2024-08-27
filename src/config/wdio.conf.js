@@ -23,7 +23,7 @@ exports.config = {
       acceptInsecureCerts: true,
     },
   ],
-  logLevel: "warn",
+  logLevel: "error",
 
   bail: 0,
 
@@ -39,27 +39,14 @@ exports.config = {
     require: ["./src/tests/step-definitions/login.steps.js"],
     timeout: 60000,
   },
-  reporter: [
-    'allure',
-{
-  outputDir: 'allure-results',
-    disableWebdriverStepsReporting: false,
-    disableWebdriverScreenshotsReporting: false,
-},
-],
-
-
-  before: () => {
-    browser.execute(() => {
-      if ("serviceWorker" in navigator) {
-        navigator.serviceWorker
-          .getRegistrations()
-          .then(function (registrations) {
-            for (let registration of registrations) {
-              registration.unregister();
-            }
-          });
-      }
-    });
-  },
+  reporters: [
+    [
+      "allure",
+      {
+        outputDir: "allure-results",
+        disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: true,
+      },
+    ],
+  ],
 };
