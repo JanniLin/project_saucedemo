@@ -36,9 +36,18 @@ exports.config = {
   framework: "cucumber",
 
   cucumberOpts: {
-    require: ["./src/tests/step-definitions/steps.js"],
+    require: ["./src/tests/step-definitions/login.steps.js"],
     timeout: 60000,
   },
+  reporter: [
+    'allure',
+{
+  outputDir: 'allure-results',
+    disableWebdriverStepsReporting: false,
+    disableWebdriverScreenshotsReporting: false,
+},
+],
+
 
   before: () => {
     browser.execute(() => {

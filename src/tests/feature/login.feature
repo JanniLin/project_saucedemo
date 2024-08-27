@@ -1,39 +1,25 @@
 Feature: Login functionality
 
-  Scenario Outline: UC-1 Test Login form with empty credentials
+  Background:
     Given I am on the login page
-    When I enter <username> in the username field
-    When I enter <password> in the password field
-    When I clear the username field
-    When I clear the password field
-    When I click the login button
+
+  Scenario Outline: User sees an error message when providing incomplete credentials
+    And I enter invalid credentials
+    And I clear the following fields: <fields_to_clear>
+    And I click the login button
     Then I should see the error <error_message>
 
     Examples:
-      | username   | password  |error_message                     |
-      | some_name  | some_pass |Epic sadface: Username is required|
+       | fields_to_clear    | error_message                      |
+       | username, password | Epic sadface: Username is required |
+       | password           | Epic sadface: Password is required |
 
-  Scenario Outline: UC-2 Test Login form by entering only the username
-    Given I am on the login page
-    When I enter <username> in the username field
-    When I enter <password> in the password field
-    When I clear the password field
-    When I click the login button
-    Then I should see the error <error_message>
-
-    Examples:
-      | username   | password  |error_message                     |
-      | some_name  | some_pass |Epic sadface: Password is required|
-
-  Scenario Outline: UC-3 Test Login form with correct credentials
-
-    Given I am on the login page
-    When I enter <username> in the username field
-    When I enter <password> in the password field
-    When I click the login button
+  Scenario Outline: User successfully logs in with correct credentials
+    And I enter valid credentials
+    And I click the login button
     Then I should see the header <text>
 
     Examples:
-      | username      | password      | text    |
-      | standard_user | secret_sauce  |Swag Labs|
+       | text       |
+       | Swag Labs  |
 

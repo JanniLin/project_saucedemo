@@ -22,12 +22,6 @@ class LoginPage extends BasePage {
   get errorMessage() {
     return $(".error-message-container");
   }
-
-  async clearField(field) {
-    await field.click();
-    await browser.keys([Key.Ctrl, "a"]);
-    await browser.keys([Key.Delete]);
-  }
 }
 
 module.exports = new LoginPage();
