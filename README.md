@@ -28,3 +28,12 @@ To run the tests, execute the following command:
 ```bash
 npm run test
 ```
+
+#### Generating and Viewing Test Reports
+
+To generate the Allure report, use the following command:
+
+```bash
+allure generate allure-results --clean -o allure-report
+allure open allure-report
+```

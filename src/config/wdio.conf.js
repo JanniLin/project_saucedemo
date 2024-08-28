@@ -1,6 +1,8 @@
 exports.config = {
   runner: "local",
+
   baseUrl: "https://www.saucedemo.com",
+
   specs: ["./../tests/feature/**/*.feature"],
 
   maxInstances: 6,
@@ -36,7 +38,10 @@ exports.config = {
   framework: "cucumber",
 
   cucumberOpts: {
-    require: ["./src/tests/step-definitions/login.steps.js"],
+    require: [
+      "./src/tests/step-definitions/login.steps.js",
+      "./src/tests/step-definitions/common.steps.js",
+    ],
     timeout: 60000,
   },
   reporters: [

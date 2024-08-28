@@ -12,6 +12,7 @@
     "prettier": "^3.3.3"
   },
   "dependencies": {
-    "@wdio/reporter": "^9.0.4"
+    "@wdio/reporter": "^9.0.4",
+    "allure-commandline": "^2.30.0"
   }
 }
