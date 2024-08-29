@@ -14,5 +14,6 @@
   "dependencies": {
     "@wdio/reporter": "^9.0.4",
     "allure-commandline": "^2.30.0"
+
   }
 }
