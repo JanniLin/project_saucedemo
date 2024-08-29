@@ -1,4 +1,3 @@
-import { Key } from "webdriverio";
 
 const { $ } = require("@wdio/globals");
 const BasePage = require("./base.page");
