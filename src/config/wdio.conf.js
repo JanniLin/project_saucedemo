@@ -41,6 +41,7 @@ exports.config = {
     require: [
       "./src/tests/step-definitions/login.steps.js",
       "./src/tests/step-definitions/common.steps.js",
+      "./src/tests/step-definitions/inventory.steps.js",
     ],
     timeout: 60000,
   },

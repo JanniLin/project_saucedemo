@@ -1,31 +1,23 @@
-const { Given, When, Then } = require("@wdio/cucumber-framework");
-const { LoginPage, InventoryPage, pages } = require("../../po/pagesFactory");
+const { When, Then } = require("@wdio/cucumber-framework");
+const { LoginPage, pages } = require("../../po/pagesFactory");
 const { invalidCredentials, validCredentials } = require("../data/credentials");
 
-Given(/^I am on the (\w+) page$/, async (page) => {
-  await pages[page].open();
-});
+When(/^I enter (valid|invalid) credentials$/, async (credentialType) => {
+  const credentials =
+    credentialType === "valid" ? validCredentials : invalidCredentials;
 
-When(/^I enter valid credentials$/, async () => {
-  await LoginPage.usernameField.setValue(validCredentials.username);
-  await LoginPage.passwordField.setValue(validCredentials.password);
-});
-
-When(/^I enter invalid credentials$/, async () => {
-  await LoginPage.usernameField.setValue(invalidCredentials.username);
-  await LoginPage.passwordField.setValue(invalidCredentials.password);
+  await LoginPage.usernameField.setValue(credentials.username);
+  await LoginPage.passwordField.setValue(credentials.password);
 });
 
 When(/^I click the login button$/, async () => {
   await LoginPage.loginButton.click();
 });
 
-Then(/^I should see the error (.+)$/, async (error_message) => {
-  const message = await LoginPage.errorMessage.getText();
-  await expect(message).toContain(error_message);
-});
-
-Then(/^I should see the header (.+)$/, async (text) => {
-  const headerElement = await InventoryPage.headerText;
-  await expect(headerElement).toHaveText(text);
-});
+Then(
+  /^I should see the error (.+) on the (.+) page$/,
+  async (error_message, page) => {
+    const message = await pages[page].errorMessage.getText();
+    await expect(message).toContain(error_message);
+  },
+);

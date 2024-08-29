@@ -1,5 +1,9 @@
-const { When } = require("@wdio/cucumber-framework");
+const { When, Given } = require("@wdio/cucumber-framework");
 const { pages } = require("../../po/pagesFactory");
+
+Given(/^I am on the (\w+) page$/, async (page) => {
+  await pages[page].open();
+});
 
 When(
   /^I clear the following fields: (.+) on the (.+) page$/,

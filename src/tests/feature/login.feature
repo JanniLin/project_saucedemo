@@ -7,7 +7,7 @@ Feature: Login functionality
     And I enter invalid credentials
     And I clear the following fields: <fields_to_clear> on the login page
     And I click the login button
-    Then I should see the error <error_message>
+    Then I should see the error <error_message> on the login page
 
     Examples:
       | fields_to_clear    | error_message                      |
@@ -17,7 +17,7 @@ Feature: Login functionality
   Scenario Outline: User successfully logs in with correct credentials
     And I enter valid credentials
     And I click the login button
-    Then I should see the header <text>
+    Then I should see the header <text> on the inventory page
 
     Examples:
       | text       |
