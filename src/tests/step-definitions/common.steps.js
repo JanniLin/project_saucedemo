@@ -1,8 +1,11 @@
 const { When, Given } = require("@wdio/cucumber-framework");
 const { pages } = require("../../po/pagesFactory");
 
-Given(/^I am on the (\w+) page$/, async (page) => {
-  await pages[page].open();
+Given(/^I am on the (.+) page$/, async (page) => {
+  page.includes("login")
+    ? await pages.login.open()
+    : await pages.inventory.open();
+  // await pages[page].open();
 });
 
 When(

@@ -1,7 +1,7 @@
 Feature: Login functionality
 
   Background:
-    Given I am on the login page
+    Given I am on the login new page
 
   Scenario Outline: User sees an error message when providing incomplete credentials
     And I enter invalid credentials
@@ -17,7 +17,7 @@ Feature: Login functionality
   Scenario Outline: User successfully logs in with correct credentials
     And I enter valid credentials
     And I click the login button
-    Then I should see the header <text> on the inventory page
+    Then I should see the header <text> on the inventory new page
 
     Examples:
       | text       |
