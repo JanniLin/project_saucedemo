@@ -1,4 +1,3 @@
-
 const { $ } = require("@wdio/globals");
 const BasePage = require("./base.page");
 
@@ -7,20 +6,13 @@ class LoginPage extends BasePage {
     super("");
   }
 
-  get usernameField() {
-    return $("input#user-name");
-  }
+  usernameField = $("input#user-name");
 
-  get passwordField() {
-    return $("input#password");
-  }
+  passwordField = $("input#password");
 
-  get loginButton() {
-    return $("input#login-button");
-  }
-  get errorMessage() {
-    return $(".error-message-container");
-  }
+  loginButton = $("input#login-button");
+
+  errorMessage = $(".error-message-container");
 }
 
 module.exports = new LoginPage();

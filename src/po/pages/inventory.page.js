@@ -4,9 +4,7 @@ class InventoryPage extends BasePage {
   constructor() {
     super("/inventory");
   }
-  get headerText() {
-    return $("div.app_logo");
-  }
+  headerText = $("div.app_logo");
 }
 
 module.exports = new InventoryPage();
